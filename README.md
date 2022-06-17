@@ -1,2 +1,2 @@
-# opa-gatekeepero-demo
+# opa-gatekeeper-demo
 OPA Gatekeeper demo
