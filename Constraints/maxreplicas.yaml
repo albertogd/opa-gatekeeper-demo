@@ -1,6 +1,8 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: MaxReplicas
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   name: maxreplicas
 spec:
   enforcementAction: deny

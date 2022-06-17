@@ -1,6 +1,8 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
 kind: ConstraintTemplate
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   name: maxreplicas
 spec:
   crd:

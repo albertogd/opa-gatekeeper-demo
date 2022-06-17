@@ -1,6 +1,8 @@
 apiVersion: operator.gatekeeper.sh/v1alpha1
 kind: Gatekeeper
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   name: gatekeeper
 spec:
   audit:
