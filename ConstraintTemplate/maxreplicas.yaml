@@ -1,0 +1,46 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  name: maxreplicas
+spec:
+  crd:
+    spec:
+      names:
+        kind: MaxReplicas
+      validation:
+        openAPIV3Schema:
+          properties:
+            replicas:
+              type: integer
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package maxreplicas
+
+        missing(obj, field) = true {
+          not obj[field]
+        }
+
+        missing(obj, field) = true {
+          obj[field] == ""
+        }
+
+        violation[{"msg": msg}] {
+          object := input.review.object
+            missing(object.spec, "replicas")
+            msg := sprintf("Deployment %v has no replicas defined", [object.metadata.name])
+        }
+
+        violation[{"msg": msg}] {
+          replicas := input.review.object.spec.replicas
+          max_replicas := input.parameters.replicas
+          to_number(replicas) > to_number(max_replicas)
+          msg := sprintf("Review - Deployment %v pods is higher than the maximum allowed of %v", [replicas, max_replicas])
+        }  
+
+        violation[{"msg": msg}] {
+          replicas := input.request.object.spec.replicas
+          max_replicas := input.parameters.replicas
+          to_number(replicas) > to_number(max_replicas)
+          msg := sprintf("Request - Deployment %v pods is higher than the maximum allowed of %v", [replicas, max_replicas])
+        }  

@@ -1,0 +1,15 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: MaxReplicas
+metadata:
+  name: maxreplicas
+spec:
+  enforcementAction: deny
+  match:
+    namespaces:
+      - test-with-opa-1
+      - test-with-opa-2
+    kinds:
+      - apiGroups: ["*"]
+        kinds: ["Deployment"]
+  parameters:
+    replicas: 2
