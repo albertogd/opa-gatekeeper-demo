@@ -5,7 +5,7 @@ metadata:
   namespace: openshift-operators
 spec:
   channel: stable
-  installPlanApproval: Manual
+  installPlanApproval: Automatic
   name: gatekeeper-operator-product
   source: redhat-operators
   sourceNamespace: openshift-marketplace
