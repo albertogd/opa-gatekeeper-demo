@@ -11,5 +11,5 @@ spec:
   validatingWebhook: Enabled
   webhook:
     logLevel: INFO
-    replicas: 2
     failurePolicy: Ignore
+    emitAdmissionEvents: Enabled
