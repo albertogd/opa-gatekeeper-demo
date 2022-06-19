@@ -6,3 +6,6 @@ rules:
 - apiGroups: ["operator.gatekeeper.sh"]
   resources: ["gatekeepers"]
   verbs: ["*"]
+- apiGroups: ["templates.gatekeeper.sh"]
+  resources: ["constrainttemplates"]
+  verbs: ["*"]
