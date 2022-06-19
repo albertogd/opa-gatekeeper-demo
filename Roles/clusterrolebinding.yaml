@@ -1,6 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   name: openshift-gitops-gatekeeper-argocd-application-controller
 subjects:
 - kind: ServiceAccount
