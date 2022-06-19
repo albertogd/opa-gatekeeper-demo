@@ -12,5 +12,5 @@ rules:
   resources: ["constrainttemplates"]
   verbs: ["*"]
 - apiGroups: ["constraints.gatekeeper.sh"]
-  resources: ["maxreplicas"]]
+  resources: ["maxreplicas"]
   verbs: ["*"]
