@@ -4,3 +4,4 @@ bases:
 - Gatekeeper
 - Roles
 - Operator
+- ValidatingWebhook
