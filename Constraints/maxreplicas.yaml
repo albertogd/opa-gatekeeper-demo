@@ -13,5 +13,7 @@ spec:
     kinds:
       - apiGroups: ["*"]
         kinds: ["Deployment"]
+      - apiGroups: ["autoscaling"]
+        kinds: ["Scale"]
   parameters:
     replicas: 2
